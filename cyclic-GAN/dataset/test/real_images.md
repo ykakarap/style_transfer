@@ -1,1 +1,0 @@
-Sample real pictures.
