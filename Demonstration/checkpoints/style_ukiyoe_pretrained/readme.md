@@ -1,0 +1,1 @@
+style_ukiyoe_pretrained model
