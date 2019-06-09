@@ -1,4 +1,4 @@
-# Style Transfer
+# Project : Style Transfer
 
 Project description
 =======================
@@ -16,5 +16,13 @@ For cyclic GAN model, run 'requirements.txt' to install all the neceassary packa
 
 Code organization
 =======================
+#### gatys
+
 
 #### Cyclic GAN Model
+cyclic-GAN/
+Demonstration.ipynb     -- Run the demo of cyclic GAN for Image-to-Image translation. (Outputs the result of Real Image translation into Cezanne, Monet, Ukiyoe, Vangogh)
+train.py                -- To train the cyclic-GAN model.
+test.py                 -- To test the cyclic-GAN model.
+cycle_GAN_model.py      -- cycle GAN model.
+options                 -- training and testing options (e.g. epochs, batch_size etc)
