@@ -1,0 +1,1 @@
+style_monet_pretrained/ model
