@@ -21,8 +21,8 @@ Code organization
 
 #### Cyclic GAN Model
 cyclic-GAN/
-Demonstration.ipynb     -- Run the demo of cyclic GAN for Image-to-Image translation. (Outputs the result of Real Image translation into Cezanne, Monet, Ukiyoe, Vangogh)
-train.py                -- To train the cyclic-GAN model.
-test.py                 -- To test the cyclic-GAN model.
-cycle_GAN_model.py      -- cycle GAN model.
+Demonstration.ipynb     -- Run the demo of cyclic GAN for Image-to-Image translation. (Outputs the result of Real Image translation into Cezanne, Monet, Ukiyoe, Vangogh)<br>
+train.py                -- To train the cyclic-GAN model.<br>
+test.py                 -- To test the cyclic-GAN model.<br>
+cycle_GAN_model.py      -- cycle GAN model.<br>
 options                 -- training and testing options (e.g. epochs, batch_size etc)
