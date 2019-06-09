@@ -19,7 +19,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # %%
 # desired size of the output image
 # imsize = 512 if torch.cuda.is_available() else 128  # use small size if no gpu
-imsize = 512
+imsize = 128
 
 loader = transforms.Compose([
     transforms.Resize((imsize, imsize)),  # scale imported image
@@ -34,12 +34,8 @@ def image_loader(image_name):
     return image.to(device, torch.float)
 
 # %%
-# style_img = image_loader("images/picasso.jpg")
-# content_img = image_loader("images/dancing.jpg")
-
-
-style_img = image_loader("images/gatys/starry_night.jpg")
-content_img = image_loader("images/gatys/avengers_square.jpg")
+style_img = image_loader("images/starry_night.jpg")
+content_img = image_loader("images/avengers_square.jpg")
 
 # %%
 unloader = transforms.ToPILImage()  # reconvert into PIL image
@@ -198,6 +194,7 @@ def get_style_model_and_losses(cnn, normalization_mean, normalization_std,
 
         model.add_module(name, layer)
 
+
         if name in content_layers:
             # add content loss:
             target = model(content_img).detach()
@@ -298,7 +295,7 @@ def run_style_transfer(cnn, normalization_mean, normalization_std,
 # %%
 loss_vals = []
 output, loss_vals = run_style_transfer(cnn, cnn_normalization_mean, cnn_normalization_std,
-                                       content_img, style_img, input_img, num_steps=1)
+                                       content_img, style_img, input_img, num_steps=150)
 
 # %%
 plt.figure()
@@ -307,26 +304,3 @@ imshow(output, title='Output Image')
 # sphinx_gallery_thumbnail_number = 4
 # plt.ioff()
 plt.show()
-
-# %%
-utils.save_image(
-    output, "images/gatys/results/avengers__starry_night_1e7_better.png")
-
-
-# %%
-plt.title("Total Loss vs iterations")
-plt.xlabel("Iterations (every 5th)")
-plt.ylabel("Loss_Total")
-plt.plot(range(len(loss_vals[::10])), loss_vals[::10])
-# plt.show()
-
-plt.savefig("images/gatys/results/loss_scream_1e7_avg_every_other_5.png")
-
-# %%
-import pickle
-
-loss_vals_file = open("images/gatys/results/loss_vals.pkl", "wb")
-pickle.dump(loss_vals, loss_vals_file)
-loss_vals_file.close()
-
-# %%
